@@ -17,20 +17,35 @@ configurations {
 repositories {
     mavenCentral()
     maven { url 'https://repo.spring.io/milestone' }
+    jcenter()
 }
+
+def jdaVersion = '4.0.0_45'
+def pircbotxVersion = '2.1'
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-cloud-connectors'
     implementation 'org.springframework.boot:spring-boot-starter-rsocket'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    implementation "org.pircbotx:pircbotx:$pircbotxVersion"
+    implementation ("net.dv8tion:JDA:$jdaVersion") {
+        exclude module: 'opus-java'
+    }
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
+
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'io.projectreactor:reactor-test'
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
 }
 
 test {
