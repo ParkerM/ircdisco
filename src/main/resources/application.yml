@@ -1,1 +1,34 @@
+spring:
+  application:
+    name: "ircdisco"
+  main:
+    web-application-type: reactive
+server:
+  port: 8080
+  ssl:
+    enabled: false
 
+management:
+  endpoint:
+    beans:
+      enabled: true
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
+  server:
+    ssl:
+      enabled: false
+
+irc:
+  auto-join-channel: "#testMeOut"
+  nick: aCoolFoolBotto
+  login: aCoolFoolBotto
+  server-url: irc.synirc.net
+  server-port: 6697
+  ssl-enabled: true
