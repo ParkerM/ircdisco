@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import reactor.test.StepVerifier;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,10 +26,10 @@ class PIrcBotClientTest {
     void isRunning() {
         assertThat(pIrcClient.isRunning()).isFalse();
 
-        StepVerifier.create(pIrcClient.start()).verifyComplete();
+        pIrcClient.start();
         assertThat(pIrcClient.isRunning()).isTrue();
 
-        StepVerifier.create(pIrcClient.stop()).verifyComplete();
+        pIrcClient.stop();
         assertThat(pIrcClient.isRunning()).isFalse();
     }
 }

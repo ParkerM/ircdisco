@@ -1,12 +1,7 @@
 package io.github.parkerm.ircdisco.client;
 
-import reactor.core.publisher.Mono;
+import org.springframework.context.SmartLifecycle;
 
-public interface ClientBase {
+public interface ClientBase extends SmartLifecycle {
 
-    boolean isRunning();
-
-    Mono<Void> start();
-
-    Mono<Void> stop();
 }

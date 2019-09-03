@@ -2,7 +2,6 @@ package io.github.parkerm.ircdisco.client.discord;
 
 import io.github.parkerm.ircdisco.config.DiscordConfiguration;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -21,16 +20,12 @@ public class JDAClient implements DiscordClient {
     }
 
     @Override
-    public Mono<Void> start() {
-        return Mono.empty()
-                .then()
-                .doOnSuccess(v -> running.set(true));
+    public void start() {
+        running.set(true);
     }
 
     @Override
-    public Mono<Void> stop() {
-        return Mono.empty()
-                .then()
-                .doOnSuccess(v -> running.set(false));
+    public void stop() {
+        running.set(false);
     }
 }

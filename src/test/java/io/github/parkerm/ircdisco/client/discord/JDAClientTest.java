@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import reactor.test.StepVerifier;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,10 +26,10 @@ class JDAClientTest {
     void isRunning() {
         assertThat(jdaClient.isRunning()).isFalse();
 
-        StepVerifier.create(jdaClient.start()).verifyComplete();
+        jdaClient.start();
         assertThat(jdaClient.isRunning()).isTrue();
 
-        StepVerifier.create(jdaClient.stop()).verifyComplete();
+        jdaClient.stop();
         assertThat(jdaClient.isRunning()).isFalse();
     }
 }
