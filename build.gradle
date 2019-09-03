@@ -21,6 +21,7 @@ repositories {
 }
 
 def jdaVersion = '4.0.0_45'
+def jdaReactorVersion = '0.2.7'
 def pircbotxVersion = '2.1'
 
 dependencies {
@@ -31,6 +32,7 @@ dependencies {
     implementation ("net.dv8tion:JDA:$jdaVersion") {
         exclude module: 'opus-java'
     }
+    implementation "club.minnced:jda-reactor:$jdaReactorVersion"
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
